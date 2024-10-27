@@ -1,0 +1,21 @@
+<view class="container">
+  <view class="header">
+    <text class="title">我的摄像头</text>
+  </view>
+  
+  <view class="camera-list">
+    <view class="camera-item" wx:for="{{cameras}}" wx:key="id" bindtap="viewStream" data-id="{{item.id}}">
+      <image class="camera-preview" src="{{item.preview}}" mode="aspectFill"/>
+      <view class="camera-info">
+        <text class="camera-name">{{item.name}}</text>
+        <text class="camera-status {{item.status === 'online' ? 'online' : 'offline'}}">
+          {{item.status === 'online' ? '在线' : '离线'}}
+        </text>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty" wx:if="{{!cameras.length}}">
+    <text>暂无摄像头设备</text>
+  </view>
+</view>

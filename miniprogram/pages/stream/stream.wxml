@@ -1,0 +1,32 @@
+<view class="container">
+  <live-player 
+    class="player"
+    id="player"
+    src="{{streamUrl}}"
+    mode="live"
+    autoplay="{{true}}"
+    bindstatechange="statechange"
+    binderror="error">
+    <cover-view class="controls">
+      <cover-view class="control-item" bindtap="handleFullScreen">
+        全屏
+      </cover-view>
+      <cover-view class="control-item" bindtap="handleSnapshot">
+        截图
+      </cover-view>
+    </cover-view>
+  </live-player>
+
+  <view class="info-panel">
+    <view class="info-item">
+      <text class="label">设备名称：</text>
+      <text class="value">{{cameraInfo.name}}</text>
+    </view>
+    <view class="info-item">
+      <text class="label">设备状态：</text>
+      <text class="value status {{cameraInfo.status === 'online' ? 'online' : 'offline'}}">
+        {{cameraInfo.status === 'online' ? '在线' : '离线'}}
+      </text>
+    </view>
+  </view>
+</view>
